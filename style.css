@@ -805,3 +805,54 @@ section{
 }
 
 /* FOOTER END */ 
+
+/* Küçük ekranlar (tablet ve telefonlar) */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-img img {
+    width: 200px;
+    margin: 20px auto;
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-img img {
+    width: 150px;
+  }
+
+  .info-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-items {
+    padding: 0 20px;
+  }
+
+  .portfolio-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .contact-info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form .input-row {
+    flex-direction: column;
+  }
+
+  .form-button-left {
+    text-align: center;
+  }
+}
+
