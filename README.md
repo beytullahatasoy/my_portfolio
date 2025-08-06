@@ -15,7 +15,5 @@ Bu proje, kişisel portföyümü tanıtmak amacıyla geliştirdiğim bir web sit
 - HTML5  
 - CSS3  
 - JavaScript  
-
-beytullahatasoy.com 
 ---
 
