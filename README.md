@@ -16,7 +16,9 @@ Bu proje, kişisel portföyümü tanıtmak amacıyla geliştirdiğim bir web sit
 - CSS3  
 - JavaScript
 
-## Canlı Görüntülemek İçin: ## 
-[👉 Web sitesine buradan ulaşabilirsiniz](https://beytullahatasoy.github.io/portfolio)
----
+## Canlı Görüntülemek İçin: 
+yakın zamanda tekrardan sizlerle olacak..
+
+# My Portfolio - Ana sayfa 
+![Ana Sayfa](./assets/anaSayfa.png)
 
