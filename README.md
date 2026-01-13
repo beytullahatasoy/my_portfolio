@@ -22,3 +22,5 @@ yakın zamanda tekrardan sizlerle olacak..
 # My Portfolio - Ana sayfa 
 ![Ana Sayfa](./assets/anaSayfa.png)
 
+# My Portfolio - Profil sayfası 
+![Ana Sayfa](./assets/profil.png)
