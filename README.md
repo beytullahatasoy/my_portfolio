@@ -1,26 +1,26 @@
-# Kişisel Portföy Web Sitesi
+# Personal Portfolio Website
 
-Bu proje, kişisel portföyümü tanıtmak amacıyla geliştirdiğim bir web sitesidir. Yazılım alanındaki yetkinliklerimi, projelerimi ve iletişim bilgilerimi sergilemek için tasarlanmıştır.
+This project is a website I developed to showcase my personal portfolio. It is designed to present my skills in software development, my projects, and my contact information.
 
-## İçerik
+## Content
 
-- Ana sayfa
-- Hakkımda bölümü
-- Deneyimlerim
-- Projelerim
-- İletişim formu
+- Home page  
+- About Me section  
+- Experiences  
+- Projects  
+- Contact form  
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
 - HTML5  
 - CSS3  
-- JavaScript
+- JavaScript  
 
-## Canlı Görüntülemek İçin: 
-yakın zamanda tekrardan sizlerle olacak..
+## Live Demo:
+Coming soon again...
 
-# My Portfolio - Ana sayfa 
-![Ana Sayfa](./assets/anaSayfa.png)
+# My Portfolio - Home Page  
+![Home Page](./assets/anaSayfa.png)
 
-# My Portfolio - Hakkımda 
-![Ana Sayfa](./assets/profil.png)
+# My Portfolio - About Me  
+![About Me](./assets/profil.png)
