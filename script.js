@@ -47,10 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* --- TYPING SUBHEADINGS ANIMATION --- */
   const words = [
-    "Deep Learning & AI Solutions",
-    "React Native Mobile Apps",
-    "Huawei Cloud Infrastructures",
-    "Autonomous Flight Systems"
+    "Mobile Application Development",
+    "Machine Learning & AI Solutions",
+    "Huawei Cloud Architectures"
   ];
   let wordIdx = 0;
   let charIdx = 0;
@@ -122,64 +121,104 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* --- CONTACT FORM HANDLER --- */
+  /* --- CONTACT FORM HANDLER & PREMIUM EMAIL MODAL --- */
   const contactForm = document.getElementById("portfolio-contact-form");
-  if (contactForm) {
+  const emailModal = document.getElementById("email-modal");
+  const emailModalClose = document.getElementById("email-modal-close");
+
+  if (contactForm && emailModal && emailModalClose) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      
+
       const nameVal = document.getElementById("form-name").value;
       const emailVal = document.getElementById("form-email").value;
-      
-      alert(`Teşekkürler ${nameVal}! Mesajınız başarıyla gönderildi. beytullahatasoy55@gmail.com adresinden veya telefonunuzdan sizinle en kısa sürede iletişime geçeceğim.`);
+      const subjectVal = document.getElementById("form-subject").value;
+      const messageVal = document.getElementById("form-message").value;
+
+      const emailTo = "beytullahatasoy55@gmail.com";
+      const subjectText = subjectVal || "Portfolio Contact";
+      const bodyText = `Hi Beytullah,\n\n${messageVal}\n\nBest regards,\n${nameVal}\nEmail: ${emailVal}`;
+
+      // Populate modal fields
+      document.getElementById("modal-subject").value = subjectText;
+      document.getElementById("modal-body").value = bodyText;
+
+      // Encode parameters for URLs
+      const encodedSubject = encodeURIComponent(subjectText);
+      const encodedBody = encodeURIComponent(bodyText);
+
+      // Generate action URLs
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailTo}&su=${encodedSubject}&body=${encodedBody}`;
+      const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${emailTo}&subject=${encodedSubject}&body=${encodedBody}`;
+
+      // Update modal anchor hrefs
+      document.getElementById("modal-btn-gmail").href = gmailUrl;
+      document.getElementById("modal-btn-outlook").href = outlookUrl;
+
+      // Display the helper/fallback modal
+      emailModal.style.display = "flex";
+      setTimeout(() => {
+        emailModal.classList.add("active");
+      }, 10);
+
+      // Reset the form inputs
       contactForm.reset();
     });
-  }
 
-  /* --- PORTFOLIO LIGHTBOX MODAL --- */
-  const lightbox = document.getElementById("portfolio-lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const lightboxTitle = document.getElementById("lightbox-title");
-  const lightboxDesc = document.getElementById("lightbox-desc");
-  const lightboxClose = document.querySelector(".lightbox-close");
-  const viewScreenshotsBtns = document.querySelectorAll(".view-screenshots-btn");
-
-  if (lightbox && lightboxImg && lightboxClose) {
-    viewScreenshotsBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const imgPath = btn.getAttribute("data-img");
-        const titleText = btn.getAttribute("data-title");
-        const descText = btn.getAttribute("data-desc");
-
-        lightboxImg.src = imgPath;
-        lightboxTitle.textContent = titleText;
-        lightboxDesc.textContent = descText;
-
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden"; // Disable scroll when modal is open
-      });
-    });
-
-    const closeLightbox = () => {
-      lightbox.classList.remove("active");
-      document.body.style.overflow = ""; // Re-enable scroll
+    // Close Modal trigger
+    const closeModal = () => {
+      emailModal.classList.remove("active");
+      setTimeout(() => {
+        emailModal.style.display = "none";
+      }, 300);
     };
 
-    lightboxClose.addEventListener("click", closeLightbox);
-    
-    // Close on click outside the image content box
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
+    emailModalClose.addEventListener("click", closeModal);
+
+    // Close on click outside
+    emailModal.addEventListener("click", (e) => {
+      if (e.target === emailModal) {
+        closeModal();
       }
     });
 
     // Close on Escape key press
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox.classList.contains("active")) {
-        closeLightbox();
+      if (e.key === "Escape" && emailModal.classList.contains("active")) {
+        closeModal();
       }
+    });
+
+    // Clipboard Copy Buttons Handler
+    const copyBtns = document.querySelectorAll(".modal-copy-btn");
+    copyBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-copy");
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Copy text to clipboard
+          targetElement.select();
+          targetElement.setSelectionRange(0, 99999); // For mobile devices
+          navigator.clipboard.writeText(targetElement.value)
+            .then(() => {
+              // Show copy success animation
+              const icon = btn.querySelector("i");
+              icon.className = "bi bi-check2-all";
+              btn.style.backgroundColor = "var(--main-color)";
+              btn.style.color = "#000";
+              
+              setTimeout(() => {
+                icon.className = "bi bi-clipboard";
+                btn.style.backgroundColor = "";
+                btn.style.color = "";
+              }, 1500);
+            })
+            .catch(err => {
+              console.error("Could not copy text: ", err);
+            });
+        }
+      });
     });
   }
 });
