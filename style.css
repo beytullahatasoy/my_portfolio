@@ -555,6 +555,7 @@ section {
 }
 
 .award-card {
+  position: relative;
   display: block;
   cursor: pointer;
   background-color: var(--bg-color);
@@ -568,8 +569,110 @@ section {
 }
 
 .award-card:hover {
-  box-shadow: 0 0 30px var(--main-color);
   transform: scale(1.05);
+}
+
+.award-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s ease;
+  padding: 25px;
+  text-align: center;
+  z-index: 5;
+}
+
+.award-card:hover .award-overlay {
+  opacity: 1;
+}
+
+.award-overlay h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+.award-badge-gold .award-overlay h3 {
+  color: #ffd700;
+}
+
+.award-badge-silver .award-overlay h3 {
+  color: #c0c0c0;
+}
+
+.award-host-overlay {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.award-badge-gold .award-host-overlay {
+  color: #ffd700;
+}
+
+.award-badge-silver .award-host-overlay {
+  color: #c0c0c0;
+}
+
+/* Action button matching portfolio styles */
+.award-click-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  background: rgba(0, 255, 238, 0.05);
+  border: 1.5px solid var(--main-color);
+  color: var(--main-color);
+  box-shadow: 0 0 12px rgba(0, 255, 238, 0.25);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.award-badge-gold .award-click-indicator {
+  background: rgba(255, 215, 0, 0.05);
+  border-color: #ffd700;
+  color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
+}
+
+.award-badge-silver .award-click-indicator {
+  background: rgba(192, 192, 192, 0.05);
+  border-color: #c0c0c0;
+  color: #c0c0c0;
+  box-shadow: 0 0 12px rgba(192, 192, 192, 0.25);
+}
+
+.award-card:hover .award-click-indicator {
+  background: var(--main-color);
+  color: #000;
+  box-shadow: 0 0 25px var(--main-color);
+  transform: scale(1.08);
+}
+
+.award-badge-gold:hover .award-click-indicator {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 25px #ffd700;
+}
+
+.award-badge-silver:hover .award-click-indicator {
+  background: #c0c0c0;
+  color: #000;
+  box-shadow: 0 0 25px #c0c0c0;
 }
 
 .award-img-box {
